@@ -24,14 +24,38 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const decodedCityName = decodeURIComponent(cityNameFromUrl);
     document.title = `Loading ${decodedCityName} Information... | WorldClocks`;
+
+    function updateSEOTags(currentCityName) {
+        const encodedCityName = encodeURIComponent(currentCityName); 
+        const koreanBaseUrl = 'https://ko.worldclocks.it.com/city-info.html';
+        const englishBaseUrl = 'https://worldclocks.it.com/city-info.html';
+
+        const canonicalUrl = `${koreanBaseUrl}?city=${encodedCityName}`;
+        const hreflangEnUrl = `${englishBaseUrl}?city=${encodedCityName}`;
+        const hreflangKoUrl = `${koreanBaseUrl}?city=${encodedCityName}`; 
+        const hreflangXDefaultUrl = `${englishBaseUrl}?city=${encodedCityName}`; 
+
+        let canonicalTag = document.querySelector('link[rel="canonical"]');
+        if (canonicalTag) canonicalTag.setAttribute('href', canonicalUrl);
+
+        let hreflangEnTag = document.querySelector('link[rel="alternate"][hreflang="en"]');
+        if (hreflangEnTag) hreflangEnTag.setAttribute('href', hreflangEnUrl);
+
+        let hreflangKoTag = document.querySelector('link[rel="alternate"][hreflang="ko"]');
+        if (hreflangKoTag) hreflangKoTag.setAttribute('href', hreflangKoUrl);
+
+        let hreflangXDefaultTag = document.querySelector('link[rel="alternate"][hreflang="x-default"]');
+        if (hreflangXDefaultTag) hreflangXDefaultTag.setAttribute('href', hreflangXDefaultUrl);
+    }
+
     if (loadingMessage) loadingMessage.textContent = `Loading detailed information for ${decodedCityName}...`;
 
     const jsonFiles = [
-        '/data/json/cities1.json',
-        '/data/json/cities2.json',
-        '/data/json/cities3.json',
-        '/data/json/cities4.json',
-        '/data/json/cities5.json',
+        '../data/json/cities1.json', 
+        '../data/json/cities2.json',
+        '../data/json/cities3.json',
+        '../data/json/cities4.json',
+        '../data/json/cities5.json',
 
     ];
     let cityData = null;
@@ -63,9 +87,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (cityData) {
             console.log('Found city data:', cityData);
             document.title = `${cityData.도시명} - 상세 정보 | 세계 시계`; 
+            updateSEOTags(cityData.도시명); 
             const metaDescTag = document.querySelector('meta[name="description"]');
             if (metaDescTag) {
-                metaDescTag.setAttribute('content', `Find detailed information for ${cityData.도시명}, including timezone, standard business hours, major public holidays, business tips, and recommended attractions. Discover everything about ${cityData.도시명} on WorldClocks.`); // Use Korean key
+                metaDescTag.setAttribute('content', `${cityData.도시명}의 상세 정보를 확인하세요. 시간대, 표준 업무 시간, 주요 공휴일, 비즈니스 팁, 추천 명소 등을 제공합니다. ${cityData.도시명}에 대한 모든 것을 세계 시계 레인보우에서 찾아보세요.`);
             }
 
             const attractionsHtml = (cityData.전문가를위한최고명소 || []) 
@@ -116,11 +141,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             console.warn(`Information for '${decodedCityName}' not found in any of the checked JSON files.`);
             cityDetailContainer.innerHTML = `<p>Detailed information for '${decodedCityName}' could not be found. Please check the city name.</p>`;
-            document.title = `Information Not Found | ${decodedCityName} | WorldClocks`;
+            document.title = `정보 없음 | ${decodedCityName} | 세계 시계`;
+            updateSEOTags(decodedCityName);
         }
     } catch (error) {
         console.error('Error loading city details:', error);
         cityDetailContainer.innerHTML = `<p>An error occurred while loading information: ${error.message}. Please try again later.</p>`;
-        document.title = "Error Loading Data | WorldClocks";
+        document.title = "데이터 로딩 오류 | 세계 시계";
     }
 });
