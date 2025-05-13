@@ -1,0 +1,658 @@
+#city-info {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ffffff, #d4e4ff);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    z-index: 1000;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-family: "Malgun Gothic", "맑은 고딕", Dotum, "돋움", AppleSDGothicNeo, "애플 SD 산돌고딕 Neo", sans-serif;
+    color: #222;
+    animation: popIn 0.3s ease-out;
+}
+#city-info .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #444;
+    transition: color 0.2s;
+}
+#city-info .close-btn:hover {
+    color: #ff5555;
+}
+#city-info h2 {
+    margin: 0 0 15px;
+    font-size: 26px;
+    color: #1a3c87;
+}
+#city-info p, #city-info ul {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+#city-info ul {
+    padding-left: 20px;
+}
+#city-info li {
+    margin-bottom: 8px;
+}
+@keyframes popIn {
+    from { transform: translate(-50%, -40%); opacity: 0; }
+    to { transform: translate(-50%, -50%); opacity: 1; }
+}
+nav { z-index: 1100; }
+
+#search-container {
+    text-align: center;
+    margin: 40px 0 20px;
+}
+
+#search {
+    padding: 12px 15px;
+    width: 320px;
+    max-width: 90%;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#search:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075), 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+#filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.filter-btn {
+    padding: 10px 18px;
+    margin: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 20px;
+    background-color: #f8f9fa;
+    color: #495057;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    background-color: #e9ecef;
+    border-color: #868e96;
+    color: #212529;
+}
+
+.filter-btn.active {
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.filter-btn.active[data-continent=""] { background-color: #c82333; }
+.filter-btn.active[data-continent="아시아"] { background-color: #fd7e14; }
+.filter-btn.active[data-continent="유럽"] { background-color: #ffc107; color: #333; }
+.filter-btn.active[data-continent="북아메리카"] { background-color: #28a745; }
+.filter-btn.active[data-continent="남아메리카"] { background-color: #007bff; }
+.filter-btn.active[data-continent="아프리카"] { background-color: #6f42c1; }
+.filter-btn.active[data-continent="오세아니아"] { background-color: #17a2b8; }
+
+#clocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 150px;
+    padding: 25px;
+}
+
+.clock-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.clock-container:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    top: 8px; 
+    left: 8px; 
+    background-color: rgba(0, 0, 0, 0.05); 
+    color: #555; 
+    border: none;
+    padding: 5px 7px; 
+    cursor: pointer;
+    border-radius: 50%; 
+    z-index: 10;
+    font-size: 14px; 
+    line-height: 1;
+    width: 28px; 
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.fullscreen-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #0056b3; 
+    transform: scale(1.1);
+}
+
+.fullscreen-btn i { pointer-events: none; }
+
+/* 일반 시계 카드 국기 및 도시명 스타일 */
+#clocks-container .clock-container h2 {
+    font-size: 22px; 
+    margin: 10px 0 12px 0; 
+    color: #343a40;
+    border-bottom: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#clocks-container .clock-container h2 img {
+    width: 32px; 
+    height: auto; 
+    margin-right: 8px; 
+    border: 1px solid #eee;
+    border-radius: 3px;
+    object-fit: contain;
+}
+
+/* 나만의 시계 카드 국기 및 도시명 스타일 */
+#custom-clocks-container .clock-container h2 {
+    font-size: 18px; 
+    margin: 10px 0 12px 0;
+    color: #343a40;
+    border-bottom: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#custom-clocks-container .clock-container h2 img {
+    width: 24px; 
+    height: auto;
+    margin-right: 8px; 
+    border: 1px solid #eee;
+    border-radius: 3px;
+    object-fit: contain;
+}
+
+/* 나만의 시계가 전체화면일 때 국기 크기 */
+#custom-clocks-container .clock-container.clock-fullscreen-active h2 img {
+    width: clamp(40px, 7vw, 72px); 
+    max-width: 200px; 
+    height: auto; 
+    border: 2px solid var(--border-color, #ccc); 
+    margin-right: 15px;
+    object-fit: contain;
+}
+
+
+/* 전체화면 시 스타일 */
+.clock-container.clock-fullscreen-active {
+    background-color: var(--background-color, #fff); 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.clock-container.clock-fullscreen-active h2 {
+    font-size: clamp(40px, 8vw, 75px) !important; 
+    color: var(--primary-color, #007bff) !important; 
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.clock-container.clock-fullscreen-active h2 img {
+    width: clamp(40px, 7vw, 72px); 
+    height: auto;
+    margin-right: 15px;
+    border: 2px solid var(--border-color, #ccc);
+    object-fit: contain;
+}
+
+.clock-container.clock-fullscreen-active .clock-time {
+    font-size: clamp(60px, 15vw, 150px); 
+    line-height: 1;
+}
+.clock-container.clock-fullscreen-active .clock-time .seconds { 
+    font-size: 0.5em; 
+}
+
+.clock-container.clock-fullscreen-active .clock-date {
+    font-size: clamp(20px, 4vw, 40px); 
+    margin-top: 15px; 
+    color: #444; 
+}
+
+.clock-container.clock-fullscreen-active .weather-info { 
+    font-size: 3em;
+    margin-top: 20px;
+}
+
+.clock-container.clock-fullscreen-active .remove-clock {
+    display: none; 
+}
+
+
+.clock-time {
+    font-size: 32px; 
+    font-weight: bold;
+    padding: 5px 0; 
+    color: #212529;
+}
+
+.clock-time .seconds {
+    font-size: 22px; 
+    opacity: 0.7;
+    margin-left: 2px;
+}
+
+.clock-container .clock-date {
+    font-size: 14px; 
+    color: #555;    
+    margin-bottom: 5px; 
+}
+
+.weather-info { 
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.weather-info .temp {
+    color: #D32F2F;
+    font-weight: bold;
+}
+
+.weather-info .humidity {
+    color: #0288D1;
+    font-weight: bold;
+}
+
+.clock-container .remove-clock {
+    position: absolute;
+    top: 8px; 
+    right: 8px; 
+    background-color: rgba(0, 0, 0, 0.05); 
+    color: #555; 
+    border: none;
+    font-size: 14px; 
+    cursor: pointer;
+    padding: 5px 7px; 
+    border-radius: 50%; 
+    line-height: 1;
+    z-index: 10;
+    width: 28px; 
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.clock-container .remove-clock:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #c82333; 
+    transform: scale(1.1);
+}
+
+#load-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto 150px; 
+    width: 180px; 
+    height: 48px; 
+    font-size: 16px; 
+    font-weight: 500; 
+    color: #fff;
+    background-color: #007bff; 
+    border: none;
+    border-radius: 24px; 
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#load-more:hover:not(:disabled) {
+    background-color: #0056b3; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 86, 179, 0.4);
+}
+
+#load-more:active:not(:disabled) {
+    transform: translateY(0px);
+    box-shadow: 0 2px 5px rgba(0, 86, 179, 0.3);
+}
+
+#load-more:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#custom-clocks-section {
+    background-color: #f8f9fa; 
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 25px; 
+    margin: 30px auto; 
+    width: 90%; 
+    max-width: 1200px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 16px; 
+}
+
+#custom-clocks-section h2 {
+    font-size: 24px; 
+    color: #343a40;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin: 0 0 20px 0; 
+    text-align: center;
+}
+
+.custom-clock-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px; 
+    width: 100%;
+    max-width: 400px; 
+}
+
+.search-wrapper { 
+    width: 100%;
+    position: relative;
+}
+
+#custom-city-search {
+    width: 100%;
+    padding: 12px 15px; 
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    box-sizing: border-box; 
+}
+
+#custom-city-search:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    outline: none;
+}
+
+#custom-suggestions {
+    position: absolute;
+    top: calc(100% + 4px); 
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ced4da;
+    border-top: none; 
+    border-radius: 0 0 8px 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 220px; 
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+#custom-suggestions div {
+    padding: 10px 15px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    font-size: 15px;
+}
+
+#custom-suggestions div img {
+    width: 20px; 
+    height: auto;
+}
+
+#custom-suggestions div:hover {
+    background-color: #f1f3f5;
+}
+
+.button-wrapper {
+    display: flex;
+    gap: 15px; /* 버튼 사이 간격을 적절히 설정 */
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap; 
+}
+
+#add-custom-clock,
+#clear-custom-clocks {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    /* flex: 1 1 auto; /* 버튼이 유연하게 공간을 차지하도록 변경 */
+    /* width: auto; /* 너비를 내용에 맞게 자동으로 설정 */
+    padding: 0 20px; /* 내부 패딩으로 버튼 크기 조절 (좌우 20px) */
+    height: 48px; 
+    font-size: 15px;
+    font-weight: 600; 
+    color: #fff;
+    border: none;
+    border-radius: 999px; 
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); 
+    transition: all 0.2s ease-out; 
+    letter-spacing: 0.2px; 
+    white-space: nowrap; /* 버튼 텍스트가 한 줄로 표시되도록 */
+}
+
+#add-custom-clock {
+    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%); 
+}
+#add-custom-clock:hover {
+    background: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+#add-custom-clock:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+#clear-custom-clocks {
+    background: linear-gradient(135deg, #F44336 0%, #D32F2F 100%);
+    color: #fff; 
+    border: none; 
+}
+#clear-custom-clocks:hover {
+    background: linear-gradient(135deg, #D32F2F 0%, #C62828 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+#clear-custom-clocks:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+#add-custom-clock:focus,
+#clear-custom-clocks:focus {
+    outline: none; 
+}
+#add-custom-clock:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5); 
+}
+#clear-custom-clocks:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5) !important; 
+}
+
+#custom-clocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0; 
+    width: 100%;
+}
+
+#custom-clocks-container .clock-container {
+    width: 220px; 
+    padding: 15px;
+    background: #ffffff; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+}
+
+#custom-clocks-container .clock-container h2 {
+    font-size: 18px; 
+}
+#custom-clocks-container .clock-container h2 img {
+    width: 24px; 
+    top: 0; 
+}
+
+#custom-clocks-container .clock-container .clock-time {
+    font-size: 28px; 
+}
+#custom-clocks-container .clock-container .clock-time .seconds {
+    font-size: 20px; 
+}
+
+.clock-count {
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d; 
+    margin-top: 15px; 
+}
+
+@media (max-width: 1024px) {
+    .clock-container,
+    #custom-clocks-container .clock-container {
+        width: 230px; 
+    }
+}
+
+@media (max-width: 768px) {
+    #clocks-container {
+        gap: 20px;
+        padding: 20px 15px;
+    }
+    .clock-container,
+    #custom-clocks-container .clock-container {
+        width: calc(50% - 20px); 
+        max-width: none; 
+    }
+    #custom-clocks-section {
+        width: 95%;
+        padding: 20px 15px;
+    }
+    .custom-clock-input {
+        max-width: 100%;
+    }
+    .button-wrapper {
+        flex-direction: column; 
+        width: 100%;
+        max-width: 300px; 
+        gap: 10px; 
+    }
+    #add-custom-clock, #clear-custom-clocks {
+        max-width: none; 
+        width: 100%; 
+        /* min-width: 0; 제거 또는 더 작은 값으로 */
+    }
+}
+
+@media (max-width: 480px) {
+    #search { width: calc(100% - 30px); }
+    .filter-btn { padding: 8px 12px; font-size: 13px; }
+    #clocks-container { gap: 15px; padding: 15px 10px; }
+    .clock-container,
+    #custom-clocks-container .clock-container {
+        width: calc(100% - 40px);
+        margin-left: 10px;
+        margin-right: 10px; 
+    }
+    #load-more { width: 160px; height: 44px; font-size: 15px; margin: 30px auto 80px; }
+    #custom-clocks-section { padding: 15px; margin: 20px auto; }
+    #custom-clocks-section h2 { font-size: 20px; margin-bottom: 15px;}
+    .custom-clock-input { gap: 12px; margin-bottom: 20px; }
+    #custom-city-search { padding: 10px 12px; font-size: 15px; }
+    #add-custom-clock, #clear-custom-clocks { padding: 10px 15px; font-size: 14px; }
+    .hero-section { 
+        padding: 20px 10px;
+        min-height: 80px;
+    }
+}
+
+#custom-clocks-container .clock-container .fullscreen-btn {
+    background-color: transparent;
+    top: 3px;
+    left: 3px;
+    color: #000000;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#custom-clocks-container .clock-container .fullscreen-btn i {
+    color: #000000;
+    transition: color 0.2s ease-in-out;
+}
+
+#custom-clocks-container .clock-container .remove-clock {
+    background-color: transparent;
+    color: #000000;
+    top: 3px;
+    right: 1px;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#custom-clocks-container .clock-container .fullscreen-btn:hover,
+#custom-clocks-container .clock-container .remove-clock:hover {
+    color: #FF0000;
+    transform: scale(1.4);
+}
+#custom-clocks-container .clock-container .fullscreen-btn:hover i {
+    color: #FF0000;
+}

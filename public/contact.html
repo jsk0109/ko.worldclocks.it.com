@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의하기 | 세계 시계 레인보우</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <meta name="description" content="세계 시계 레인보우에 대한 지원이나 문의사항이 있으시면 언제든지 연락주세요. 시간대 변환기 및 다양한 도구에 대한 여러분의 소중한 의견을 기다립니다.">
+    <meta name="keywords" content="문의, 시간대, 세계 시계, 시간 변환기, 고객 지원, 피드백">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Language" content="ko">
+
+    <link rel="alternate" hreflang="ko" href="https://ko.worldclocks.it.com/contact.html" />
+    <link rel="alternate" hreflang="en" href="https://worldclocks.it.com/contact.html" />
+    <link rel="alternate" hreflang="x-default" href="https://worldclocks.it.com/contact.html" />
+
+    <link rel="canonical" href="https://ko.worldclocks.it.com/contact.html" />
+</head>
+<body>
+    <header>
+        <div id="navbar-container"></div>
+    </header>
+    <section class="hero-section">
+        <h1>소중한 의견을 보내주세요 ✍️</h1>
+        <p>여러분의 생각을 공유해주시면 세계 시계 레인보우를 더욱 멋지게 만들 수 있습니다!</p>
+    </section>
+    <section class="contact-content">
+        <h2>메시지 보내기</h2>
+        <p>추가하고 싶은 도시가 있으신가요? 새로운 기능에 대한 아이디어가 있으신가요? 아니면 그냥 인사를 하고 싶으신가요? 아래 양식을 작성해주세요! 여러분의 정보는 저희의 <a href="privacy-policy.html">개인정보처리방침</a>에 따라 안전하게 보호됩니다.</p>
+        
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <p class="hidden" style="display:none;">
+                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+            </p>
+            
+            <input type="hidden" name="form-name" value="contact" />
+
+            <label for="name">이름 (선택 사항)</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력해주세요">
+            
+            <label for="email">이메일 (선택 사항, 답변을 받으시려면 입력해주세요)</label>
+            <input type="email" id="email" name="email" placeholder="이메일 주소를 입력해주세요">
+            
+            <label for="message">메시지 내용</label>
+            <textarea id="message" name="message" placeholder="여러분의 아이디어를 들려주세요!" required></textarea>
+            
+            <button type="submit">메시지 보내기</button>
+        </form>
+        
+        <h2>다른 문의 방법</h2>
+        <p>양식이 작동하지 않나요? <a href="mailto:info@worldclocks.it.com">info@worldclocks.it.com</a>으로 직접 메일을 보내주셔도 좋습니다.</p>
+        
+        <h2>X(트위터)에서 만나요</h2>
+        <p>곧 X(트위터)를 통해 여러분과 직접 소통할 계획입니다. 조금만 기다려주세요!</p>
+        
+        <h2>저희의 약속</h2>
+        <p>보내주신 메시지를 꼼꼼히 검토하고 3일 이내에 답변드리겠습니다. 모든 아이디어가 저희에게 큰 힘이 됩니다!</p>
+     </section>
+    <footer>
+        <div id="footer-container"></div>
+    </footer>
+    <script src="js/global.js"></script>
+</body>
+</html>

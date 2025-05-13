@@ -1,0 +1,9 @@
+[build]
+  publish = "public_ko"
+  functions = ".netlify/functions"
+
+[[redirects]]
+  from = "https://www.ko.worldclocks.it.com/*"
+  to = "https://ko.worldclocks.it.com/:splat"
+  status = 301
+  force = true

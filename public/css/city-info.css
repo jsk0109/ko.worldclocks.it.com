@@ -1,0 +1,119 @@
+/* Styles for city-info.html page */
+
+/* Optional: Style for the minimal hero section on city-info page for spacing */
+.city-info-hero {
+    padding-top: 20px; /* Adjust as needed for space below navbar */
+    /* background-color: transparent; */ /* Or a very subtle background if desired */
+    min-height: 5vh; /* Ensure some space even if empty */
+    text-align: center; /* If you add a title */
+}
+
+#city-detail-container {
+    padding: 20px;
+    max-width: 800px; /* Adjust as needed */
+    margin: 40px auto 100px auto;
+    background-color: var(--background-color, #fff); /* Use theme background or default white */
+    color: var(--text-color, #333); /* Use theme text color or default dark grey */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+}
+
+#city-detail-container .loading-message {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 40px 0;
+    color: var(--secondary-text-color, #777);
+}
+
+.city-info-content h1 {
+    font-size: 2.5em; /* Larger for the main city name */
+    color: var(--primary-color, #007bff); /* Use theme primary color or default blue */
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--border-color, #eee);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.city-info-content h1 img {
+    width: 50px; /* Adjust flag size as needed */
+    height: auto;
+    margin-right: 15px;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 4px;
+}
+
+.city-info-content h2 {
+    font-size: 1.8em;
+    color: var(--heading-color, #333);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color-light, #f0f0f0);
+}
+
+.city-info-content p {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.city-info-content p strong {
+    color: var(--text-strong-color, #111); /* Slightly darker for strong text */
+    margin-right: 5px;
+}
+
+.city-info-content ul {
+    list-style-type: none; /* Remove default bullets */
+    padding-left: 0; /* Remove default padding */
+    margin-bottom: 20px;
+}
+
+.city-info-content ul li {
+    background-color: var(--background-alt-color, #f9f9f9); /* Slightly different background for list items */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border-left: 4px solid var(--primary-color-light, #007bff); /* Accent border */
+    font-size: 0.95em;
+}
+
+.city-info-content ul li strong {
+    display: block; /* Make attraction/event names stand out */
+    margin-bottom: 3px;
+    color: var(--primary-color, #007bff);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #city-detail-container {
+        margin: 20px 10px 80px 10px;
+        padding: 15px;
+    }
+
+    .city-info-content h1 {
+        font-size: 2em;
+    }
+    .city-info-content h1 img {
+        width: 32px;
+        margin-right: 10px;
+    }
+
+    .city-info-content h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-info-content h1 {
+        font-size: 1.8em;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .city-info-content ul li {
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도시 정보 | 세계 시계 레인보우</title>
+    <meta name="description" content="선택한 도시에 대한 상세 정보를 확인하세요. 현지 시간, 주요 정보, 비즈니스 팁, 추천 명소 등을 제공합니다.">
+    <meta name="keywords" content="도시 정보, 현지 시간, 여행 정보, 비즈니스 정보, 세계 도시, 시간대 정보">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/city-info.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Language" content="ko">
+
+    <link rel="alternate" hreflang="ko" href="https://ko.worldclocks.it.com/city-info.html" />
+    <link rel="alternate" hreflang="en" href="https://worldclocks.it.com/city-info.html" />
+    <link rel="alternate" hreflang="x-default" href="https://worldclocks.it.com/city-info.html" />
+
+    <link rel="canonical" href="https://ko.worldclocks.it.com/city-info.html" />
+    <style>
+        /* global.css에서 body padding-bottom으로 처리되므로, 개별 main.container margin-bottom은 제거하거나 필요시 유지 */
+        /* main.container { margin-bottom: 70px; } */
+    </style>
+</head>
+<body>
+    <header>
+        <div id="navbar-container"></div>
+    </header>
+
+    <main class="container">
+        <section class="hero-section city-info-hero">
+            <h1>도시 스포트라이트 🏙️</h1>
+            <p>이 활기찬 도시의 상세 정보를 자세히 알아보세요.</p>
+        </section>
+        <section id="city-detail-container">
+            <p class="loading-message">도시 정보를 불러오는 중입니다...</p>
+        </section>
+    </main>
+
+    <footer>
+        <div id="footer-container"></div>
+    </footer>
+
+    <script src="/js/global.js"></script>
+    <script src="/js/city-info-loader.js"></script>
+</body>
+</html>
