@@ -99,8 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         container.dataset.continent = city.continent;
 
         const flag = document.createElement("img");
-        // SVG 국기 이미지 URL로 변경 (이전 요청에 따라)
-        flag.src = `https://flagcdn.com/${city.flag}.svg`; 
+        flag.src = `https://flagcdn.com/64x48/${city.flag}.png`;
         flag.alt = `${city.name} 국기`;
         flag.loading = "lazy";
 
