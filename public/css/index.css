@@ -274,20 +274,20 @@ nav { z-index: 1100; }
 
 
 .clock-time {
-    font-size: 32px; 
+    font-size: 36px; 
     font-weight: bold;
     padding: 5px 0; 
     color: #212529;
 }
 
 .clock-time .seconds {
-    font-size: 22px; 
+    font-size: 26px; 
     opacity: 0.7;
     margin-left: 2px;
 }
 
 .clock-container .clock-date {
-    font-size: 14px; 
+    font-size: 15px; 
     color: #555;    
     margin-bottom: 5px; 
 }
@@ -314,7 +314,7 @@ nav { z-index: 1100; }
     background-color: rgba(0, 0, 0, 0.05); 
     color: #555; 
     border: none;
-    font-size: 14px; 
+    font-size: 16px; 
     cursor: pointer;
     padding: 5px 7px; 
     border-radius: 50%; 
