@@ -139,7 +139,7 @@ nav { z-index: 1100; }
 }
 
 .clock-container:hover {
-    transform: translateY(-5px) scale(1.03);
+    transform: scale(1.2);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     cursor: pointer;
     z-index: 10;
@@ -169,7 +169,7 @@ nav { z-index: 1100; }
 .fullscreen-btn:hover {
     background-color: rgba(0, 0, 0, 0.1);
     color: #0056b3; 
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
 
 .fullscreen-btn i { pointer-events: none; }
@@ -194,7 +194,7 @@ nav { z-index: 1100; }
 
 /* 나만의 시계 카드 국기 및 도시명 스타일 */
 #custom-clocks-container .clock-container h2 {
-    font-size: 18px; 
+    font-size: 20px; 
     margin: 10px 0 12px 0;
     color: #343a40;
     border-bottom: none !important;
@@ -203,7 +203,7 @@ nav { z-index: 1100; }
     justify-content: center;
 }
 #custom-clocks-container .clock-container h2 img {
-    width: 24px; 
+    width: 26px; 
     height: auto;
     margin-right: 8px; 
     border: 0
