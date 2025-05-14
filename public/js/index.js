@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         container.dataset.continent = city.continent;
 
         const flag = document.createElement("img");
+        // 원래 사용하셨던 64x48 PNG 국기 이미지 URL로 변경
         flag.src = `https://flagcdn.com/64x48/${city.flag}.png`;
         flag.alt = `${city.name} 국기`;
         flag.loading = "lazy";
@@ -265,12 +266,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function createFilterButtons() {
-        const uniqueContinents = [...new Set(cities.map(city => city.continent))].sort();
-        
+        // 원하는 대륙 순서 (주황, 노랑, 초록, 파랑, 남색, 보라 순서에 해당)
+        const desiredContinentOrder = ["아시아", "유럽", "북아메리카", "남아메리카", "아프리카", "오세아니아"];
+
+        // 실제 데이터에 존재하는 모든 고유한 대륙 목록 (null이나 undefined 제외)
+        const availableContinents = new Set(cities.map(city => city.continent).filter(Boolean));
+
         const filterButtonData = [{ key: "", name: "전체" }];
-        uniqueContinents.forEach(continentName => {
-            if (continentName) { 
-                 filterButtonData.push({ key: continentName, name: continentName });
+
+        // 원하는 순서대로 버튼 데이터 추가
+        desiredContinentOrder.forEach(continentName => {
+            if (availableContinents.has(continentName)) {
+                filterButtonData.push({ key: continentName, name: continentName });
+            }
+        });
+
+        // 원하는 순서에 명시되지 않았지만 데이터에는 존재하는 그 외 대륙들을 마지막에 추가
+        // (예: "남극"과 같은 대륙이 데이터에 추가될 경우를 대비)
+        availableContinents.forEach(continentName => {
+            // 이미 "전체" 또는 desiredContinentOrder를 통해 추가되지 않은 경우에만 추가
+            if (!filterButtonData.some(item => item.name === continentName)) {
+                filterButtonData.push({ key: continentName, name: continentName });
             }
         });
 
