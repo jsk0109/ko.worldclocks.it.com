@@ -175,11 +175,11 @@ nav { z-index: 1100; }
     max-width: 400px; 
 }
 .search-wrapper { 
-    width: 90%;
+    width: 100%;
     position: relative;
 }
 #custom-city-search {
-    width: 90%;
+    width: 100%;
     padding: 12px 15px; 
     font-size: 16px;
     border: 1px solid #ced4da;
