@@ -175,11 +175,11 @@ nav { z-index: 1100; }
     max-width: 400px; 
 }
 .search-wrapper { 
-    width: 100%;
+    width: 90%;
     position: relative;
 }
 #custom-city-search {
-    width: 100%;
+    width: 90%;
     padding: 12px 15px; 
     font-size: 16px;
     border: 1px solid #ced4da;
@@ -337,7 +337,7 @@ nav { z-index: 1100; }
 .fullscreen-btn:hover {
     background-color: rgba(0, 0, 0, 0.1);
     color: #0056b3; 
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
 .fullscreen-btn i { pointer-events: none; }
 
@@ -348,7 +348,7 @@ nav { z-index: 1100; }
     background-color: rgba(0, 0, 0, 0.05); 
     color: #555; 
     border: none;
-    font-size: 14px; 
+    font-size: 16px; 
     cursor: pointer;
     padding: 5px 7px; 
     border-radius: 50%; 
@@ -364,7 +364,7 @@ nav { z-index: 1100; }
 .clock-container .remove-clock:hover {
     background-color: rgba(0, 0, 0, 0.1);
     color: #c82333; 
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
 .clock-time {
     font-size: 32px; 
