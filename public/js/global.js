@@ -39,7 +39,7 @@ const isProduction = productionHostnames.includes(window.location.hostname);
 if (isProduction && !isInPreviewMode) {
   const gaScript = document.createElement('script');
   gaScript.async = true;
-  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-EPCXS5MFDV';
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-24G9DEGX6M';
   document.head.appendChild(gaScript);
 
   const gaInitScript = document.createElement('script');
@@ -47,7 +47,7 @@ if (isProduction && !isInPreviewMode) {
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-EPCXS5MFDV');
+    gtag('config', 'G-24G9DEGX6M');
   `;
   document.head.appendChild(gaInitScript);
   console.log('WorldClocks: Google Analytics loaded for production.');
